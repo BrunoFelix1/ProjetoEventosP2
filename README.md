@@ -1,69 +1,209 @@
-# academic-events-crud
+# Academic Events Management System
 
-# Descrição do Projeto
+A comprehensive event management system designed to create and organize complex academic events with flexible and scalable architecture. The system supports hierarchical event structuring with multiple organizational levels.
 
-Este é um projeto de gerenciamento de eventos que permite a criação e organização de eventos de forma flexível e escalável. O sistema suporta a estruturação de eventos complexos, incluindo:
+## Project Overview
 
-- **Subeventos**: Cada evento pode conter subeventos, permitindo uma melhor categorização e gerenciamento de atividades relacionadas.
-- **Seções**: Dentro de cada subevento, é possível definir seções específicas que podem agrupar atividades ou trilhas temáticas.
-- **Trilhas**: As trilhas são caminhos de participação que podem incluir várias atividades, ajudando os participantes a escolherem suas experiências de acordo com seus interesses.
-- **Atividades**: Cada trilha ou seção pode incluir diversas atividades (Palestras, Mesas-Redondas, Workshops etc.).
+This project was developed to facilitate the planning and execution of academic events, offering an intuitive interface and robust functionalities to manage all aspects involved in event organization. The system supports complex event structures including:
 
-Este sistema foi desenvolvido com o intuito de facilitar o planejamento e a execução de eventos, oferecendo uma interface intuitiva e funcionalidades robustas para gerenciar todos os aspectos envolvidos.
+- **Sub-events**: Each event can contain sub-events, allowing better categorization and management of related activities
+- **Sections**: Within each sub-event, specific sections can be defined to group activities or thematic tracks
+- **Tracks**: Participation paths that can include various activities, helping participants choose their experiences according to their interests
+- **Activities**: Each track or section can include diverse activities (Lectures, Round Tables, Workshops, etc.)
+- **User Management**: Support for different user roles (Administrator, Speaker, Participant)
+- **Registration System**: Complete participant registration and management system
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Java**: Linguagem de programação principal.
-- **Maven**: Gerenciador de dependências e build.
-- **SonarQube**: Análise de qualidade de código.
-- **JUnit**: Framework de testes.
-- **Mockito**: Biblioteca de testes para Java.
+- **Java 21**: Main programming language
+- **JavaFX**: Desktop GUI framework
+- **Maven**: Dependency management and build tool
+- **JPA/Hibernate**: Object-relational mapping
+- **JUnit 5**: Testing framework
+- **Mockito**: Mocking framework for unit tests
+- **JaCoCo**: Code coverage analysis
 
-## Estrutura do Projeto
+## Architecture
+
+The project follows a layered architecture with clear separation of concerns:
+
+### Core Components
+- **Models**: Entity classes representing the domain objects
+- **Controllers**: Business logic and data flow management
+- **Repositories/DAO**: Data persistence layer
+- **UI/FXML**: User interface components
+- **Facades**: Simplified interfaces for complex subsystems
+
+### Key Models
+- `Evento` (Event): Main event entity
+- `SubEvento` (Sub-event): Event subdivisions
+- `Secao` (Section): Organizational sections within events
+- `Trilha` (Track): Thematic participation paths
+- `Atividade` (Activity): Individual activities within tracks
+- `Usuario` (User): System users with different roles
+- `Inscricao` (Registration): User registrations for events/activities
+
+## Project Structure
 
 ```plaintext
-C:.
-├───.github
-│   └───workflows          # Configurações para GitHub Actions
-├───.idea                  # Configurações do IntelliJ IDEA
-├───.vscode                # Configurações do Visual Studio Code
-├───src                    # Código fonte
-│   ├───main
-│   │   └───java           # Código Java principal
-│   │       ├───app       # Aplicação principal
-│   │       ├───controllers # Controladores
-│   │       ├───exception  # Tratamento de exceções
-│   │       ├───interfaces  # Interfaces
-│   │       ├───models     # Modelos de dados
-│   │       ├───persistence # Persistência de dados
-│   │       └───ui        # Interface do usuário
-│   └───test               # Testes
-│       └───java           # Código de teste em Java
-│           ├───controllers # Testes para controladores
-│           ├───persistence # Testes para persistência
-│           └───ui         # Testes para UI
-└───target                  # Diretório de saída do Maven
-    ├───classes            # Classes compiladas
-    ├───generated-sources  # Fontes geradas
-    ├───generated-test-sources # Fontes de teste geradas
-    ├───maven-status        # Status do Maven
-    ├───surefire-reports    # Relatórios do Surefire
-    └───test-classes       # Classes de teste compiladas
+academic-events-crud/
+├── .github/
+│   └── workflows/              # GitHub Actions CI/CD
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── controllers/    # Business logic controllers
+│   │   │   ├── models/         # Entity models
+│   │   │   ├── repositories/   # Data access layer
+│   │   │   ├── screenscontrollers/ # UI controllers
+│   │   │   ├── facade/         # Facade pattern implementations
+│   │   │   ├── interfaces/     # Interface definitions
+│   │   │   ├── exception/      # Custom exception handling
+│   │   │   ├── context/        # Application context
+│   │   │   └── Main.java       # Application entry point
+│   │   └── resources/
+│   │       └── screens/        # FXML UI definitions
+│   └── test/
+│       └── java/
+│           ├── controllers/    # Controller unit tests
+│           ├── repositories/   # Repository tests
+│           └── integration/    # Integration tests
+├── pom.xml                     # Maven configuration
+└── README.md                   # Project documentation
 ```
-## Instalação
 
-Siga as etapas abaixo para instalar e configurar o projeto em sua máquina local.
+## Features
 
-1. **Pré-requisitos**: Certifique-se de ter o [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) e [Maven](https://maven.apache.org/download.cgi) instalados.
+### Administrative Functions
+- **Event Management**: Create, update, delete, and list events
+- **Sub-event Management**: Organize events into logical sub-components
+- **Section Management**: Define organizational sections within events
+- **Track Management**: Create thematic participation paths
+- **User Management**: Manage different user roles and permissions
 
-2. Clone o repositório:
+### Speaker Functions
+- **Activity Management**: Submit, update, and delete activities
+- **Activity Listing**: View all submitted activities
+- **Activity Status Tracking**: Monitor activity approval status
+
+### Participant Functions
+- **Event Registration**: Register for events and activities
+- **Registration Management**: View and cancel registrations
+- **Certificate Generation**: Generate participation certificates
+- **Event Browsing**: Browse available events, sub-events, sections, and tracks
+
+### System Features
+- **User Authentication**: Secure login system with role-based access
+- **Data Validation**: Comprehensive input validation and error handling
+- **Responsive UI**: Intuitive JavaFX-based desktop interface
+- **Data Persistence**: Reliable data storage and retrieval
+
+## Installation and Setup
+
+### Prerequisites
+- **Java JDK 21** or higher
+- **Maven 3.6+** for dependency management
+- **IDE** (IntelliJ IDEA, Eclipse, or VS Code recommended)
+
+### Installation Steps
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/usuario/nome-do-repositorio.git
+   git clone https://github.com/username/academic-events-crud.git
+   ```
 
-3. Navegue para o diretório do projeto:
+2. Navigate to the project directory:
    ```bash
-   cd nome-do-repositorio
+   cd academic-events-crud
+   ```
 
-4. Compile o projeto com Maven:
+3. Install dependencies and compile:
    ```bash
    mvn clean install
+   ```
+
+4. Run the application:
+   ```bash
+   mvn javafx:run
+   ```
+
+   Or alternatively:
+   ```bash
+   java -cp target/classes Main
+   ```
+
+## Testing
+
+The project includes comprehensive test coverage using JUnit 5 and Mockito:
+
+### Run all tests:
+```bash
+mvn test
+```
+
+### Generate test coverage report:
+```bash
+mvn jacoco:report
+```
+
+### Test Structure
+- **Unit Tests**: Individual component testing
+- **Integration Tests**: Component interaction testing
+- **Controller Tests**: Business logic validation
+- **Repository Tests**: Data persistence validation
+
+## Usage
+
+### Getting Started
+1. Launch the application
+2. Create an administrator account or use existing credentials
+3. Set up events and organizational structure
+4. Configure user roles and permissions
+5. Begin event management
+
+### User Roles
+- **Administrator**: Full system access, event management, user management
+- **Speaker**: Activity submission and management
+- **Participant**: Event registration and participation
+
+## Technical Highlights
+
+### Design Patterns
+- **MVC Architecture**: Clear separation of concerns
+- **DAO Pattern**: Data access abstraction
+- **Facade Pattern**: Simplified interfaces for complex operations
+- **Observer Pattern**: UI updates and event handling
+
+### Data Persistence
+- JPA/Hibernate for object-relational mapping
+- Entity relationships with proper foreign key constraints
+- Data validation at both application and database levels
+
+### Error Handling
+- Comprehensive exception handling
+- User-friendly error messages
+- Input validation and sanitization
+
+## Development and Contributions
+
+### Code Quality
+- SonarQube integration for code quality analysis
+- Comprehensive unit and integration testing
+- Maven-based dependency management
+- CI/CD pipeline with GitHub Actions
+
+### Future Enhancements
+- Web-based interface for broader accessibility
+- Email notification system
+- Advanced reporting and analytics
+- Calendar integration
+- Mobile application support
+
+## Developer
+
+**Bruno** - Software Developer  
+Focused on enterprise application development and software architecture
+
+---
+
+*Project developed as part of academic coursework in software engineering and enterprise application development.*
